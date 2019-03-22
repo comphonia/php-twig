@@ -1,0 +1,25 @@
+{% extends 'base.twig' %}
+
+{%block title %}Home{% endblock %}
+
+{% block content %}
+
+Hello {% if name is not empty %}
+{{ name }}
+{% else %}
+World
+{% endif %} !
+
+<div class="contact-area">
+        {% import "forms.twig" as forms %}
+
+        <form method="post">
+        <h3> Have a question?</h3>
+            {{ forms.input('name', post.name) }}
+            {{ forms.input('email', post.email, 'text', "We'll never share your email with anyone else.") }}
+            {# {{ forms.textarea('message') }} #}
+            <button type="submit" class="btn btn-primary">Send Message</button>
+        </form> 
+</div>
+
+{% endblock %}
